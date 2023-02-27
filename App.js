@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { A } from '@expo/html-elements';
-import { Button } from 'react-native';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { A } from "@expo/html-elements";
+import { Button } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,8 +11,16 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: "Sou a página Home Magnificai" }} />
-        <Stack.Screen name="Details" component={DetailsScreen} options={{ title: "Sou a página feliz" }} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Sou a página Home Magnificai" }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={{ title: "Sou a página feliz" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -20,16 +28,19 @@ export default function App() {
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
-      <Button title='Vai pra Detalhes' onPress={() => navigation.navigate('Details')}></Button>
+      <Button
+        title="Vai pra Detalhes"
+        onPress={() => navigation.navigate("Details")}
+      ></Button>
     </View>
   );
 }
 
 function DetailsScreen() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Details Screen</Text>
     </View>
   );
@@ -45,8 +56,8 @@ function DetailsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
