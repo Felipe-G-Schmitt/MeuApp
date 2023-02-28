@@ -1,9 +1,10 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet} from "react-native";
 import { A } from "@expo/html-elements";
-import { Button } from "react-native";
+import HomeScreen from "./src/screens/HomeScreen";
+import DetailsScreen from "./src/screens/DetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,14 +24,6 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-  );
-}
-
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Details Screen</Text>
-    </View>
   );
 }
 
