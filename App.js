@@ -14,27 +14,15 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Sou a página Home Magnificai" }}
+          options={{ title: "Página Home" }}
         />
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
-          options={{ title: "Sou a página feliz" }}
+          options={{ title: "Página details" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
-  );
-}
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Vai pra Detalhes"
-        onPress={() => navigation.navigate("Details")}
-      ></Button>
-    </View>
   );
 }
 
