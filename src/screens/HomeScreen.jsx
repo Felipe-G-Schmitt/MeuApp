@@ -14,6 +14,24 @@ export default function HomeScreen({ navigation }) {
       >
         Conheça o Sobre
       </Button>
+      <br></br>
+      <Button
+        mode="contained"
+        onPress={() => {
+          navigation.navigate("StarScreen");
+        }}
+      >
+        Conheça o Starbucks
+      </Button>
+      <br></br>
+      <Button
+        mode="contained"
+        onPress={() => {
+          navigation.navigate("DetailsScreen");
+        }}
+      >
+        Conheça o Details
+      </Button>
     </View>
   );
 }
