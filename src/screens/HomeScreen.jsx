@@ -32,6 +32,15 @@ export default function HomeScreen({ navigation }) {
       >
         Conheça o Details
       </Button>
+      <br></br>
+      <Button
+        mode="contained"
+        onPress={() => {
+          navigation.navigate("LoginScreen");
+        }}
+      >
+        Faça o login
+      </Button>
     </View>
   );
 }
