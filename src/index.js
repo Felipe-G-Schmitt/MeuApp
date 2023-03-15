@@ -5,6 +5,9 @@ import DetailsScreen from "./screens/DetailsScreen";
 import HomeScreen from "./screens/HomeScreen";
 import StarScreen from "./screens/StarScreen";
 import LoginScreen from "./screens/LoginScreen";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import SplashScreen from "./screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,41 +16,63 @@ export default function RootNavigation() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="SplashScreen"
+          component={SplashScreen}
           options={{
-            title: "Tela inicial",
+            headerShown: false,
           }}
         />
         <Stack.Screen
-          name="AboutScreen"
-          component={AboutScreen}
+          name="TabsNavigation"
+          component={TabsNavigation}
           options={{
-            title: "Tela de Sobre",
-          }}
-        />
-        <Stack.Screen
-          name="StarScreen"
-          component={StarScreen}
-          options={{
-            title: "Tela Star",
-          }}
-        />
-        <Stack.Screen
-          name="DetailsScreen"
-          component={DetailsScreen}
-          options={{
-            title: "Tela Details",
-          }}
-        />
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={{
-            title: "Tela de login",
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
     </NavigationContainer>
+  );
+}
+
+const tabs = createMaterialBottomTabNavigator();
+
+function TabsNavigation() {
+  return (
+    <tabs.Navigator>
+      <tabs.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: "Início",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={26} />
+          ),
+        }}
+      />
+      <tabs.Screen
+        name="AboutScreen"
+        component={AboutScreen}
+        options={{
+          tabBarLabel: "Tela de Sobre",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="note" color={color} size={26} />
+          ),
+        }}
+      />
+      <tabs.Screen
+        name="StarScreen"
+        component={StarScreen}
+        options={{
+          tabBarLabel: "Tela Star",
+        }}
+      />
+      <tabs.Screen
+        name="DetailsScreen"
+        component={DetailsScreen}
+        options={{
+          tabBarLabel: "Tela Details",
+        }}
+      />
+    </tabs.Navigator>
   );
 }

@@ -9,20 +9,21 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-        <br></br>
-      <TextInput
-        label="Email"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-      />
-        <br></br>
-      <TextInput
-        label="Password"
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-      />
-        <br></br>
+        <Text style={styles.title}>Login</Text>
+      <View style={styles.distBottom}>
+        <TextInput
+          label="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+      </View>
+      <View style={styles.distBottom}>
+        <TextInput
+          label="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
+      </View>
       <Button
         mode="contained"
         onPress={() => {

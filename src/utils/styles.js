@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  texto: {
-    color: "tomato",
+  distBottom: {
+    marginBottom: 20,
   },
 });
 
