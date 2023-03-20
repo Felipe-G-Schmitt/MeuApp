@@ -8,6 +8,7 @@ import LoginScreen from "./screens/LoginScreen";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import SplashScreen from "./screens/SplashScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,20 @@ export default function RootNavigation() {
           component={TabsNavigation}
           options={{
             headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{
+            headerShown: true,
           }}
         />
       </Stack.Navigator>
@@ -64,6 +79,9 @@ function TabsNavigation() {
         component={StarScreen}
         options={{
           tabBarLabel: "Tela Star",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="star-box" color={color} size={26} />
+          ),
         }}
       />
       <tabs.Screen
@@ -71,6 +89,9 @@ function TabsNavigation() {
         component={DetailsScreen}
         options={{
           tabBarLabel: "Tela Details",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="details" color={color} size={26} />
+          ),
         }}
       />
     </tabs.Navigator>

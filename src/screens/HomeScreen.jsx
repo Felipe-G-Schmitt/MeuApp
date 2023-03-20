@@ -14,6 +14,14 @@ export default function HomeScreen({ navigation }) {
       >
         Faça o login
       </Button>
+      <Button
+        mode="contained"
+        onPress={() => {
+          navigation.navigate("RegisterScreen");
+        }}
+      >
+        Faça o registro
+      </Button>
     </View>
   );
 }
