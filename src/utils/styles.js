@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
   distBottom: {
     marginBottom: 20,
   },
+  distBottomHome: {
+    marginBottom: 10,
+  },
 });
 
 export default styles;

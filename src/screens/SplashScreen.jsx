@@ -5,7 +5,7 @@ import styles from "../utils/styles";
 export default function SplashScreen({ navigation }) {
   setTimeout(() => {
     navigation.navigate("TabsNavigation");
-  }, 1500);
+  }, 700);
 
   return (
     <View style={styles.container}>
