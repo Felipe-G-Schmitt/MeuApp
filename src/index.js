@@ -9,6 +9,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import SplashScreen from "./screens/SplashScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import FetchNews from "./screens/FetchNews";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,13 @@ export default function RootNavigation() {
         <Stack.Screen
           name="RegisterScreen"
           component={RegisterScreen}
+          options={{
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="FetchNews"
+          component={FetchNews}
           options={{
             headerShown: true,
           }}
@@ -91,6 +99,16 @@ function TabsNavigation() {
           tabBarLabel: "Tela Details",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="details" color={color} size={26} />
+          ),
+        }}
+      />
+      <tabs.Screen
+        name="FecthNews"
+        component={FetchNews}
+        options={{
+          tabBarLabel: "Tela fetch",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="newspaper" color={color} size={26} />
           ),
         }}
       />
