@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { ScrollView, View } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { Text } from "react-native-paper";
 import styles from "../utils/styles";
 
@@ -20,12 +20,29 @@ export default function FetchNews() {
 
   return (
     <ScrollView>
-    <View style={styles.container}>
-        <Text style={{fontSize: '30px', fontWeight:'bold', margin: '15px'}}>Fetch News</Text>
-            {data.results?.map((item) => (
-                <Text style={{ fontSize: '25px', margin: '5px'}} key={item.id}>{item.name} | {item.status} | {item.species} | {item.gender}</Text>
-            ))}
-    </View>
+      <View style={styles.container}>
+        <Text style={{ fontSize: "30px", fontWeight: "bold", margin: "15px" }}>
+          API Rick and Morty
+        </Text>
+        {data.results?.map((item) => (
+          <Text style={{ fontSize: "20px", margin: "8px" }} key={item.id}>
+            <View style={styles.viewFetch}>
+              <Image
+                source={{ uri: item.image }}
+                style={{ width: 300, border: "2px solid white", height: 300 }}
+              />
+              <View style={{ alignItems: "center", marginTop: 10 }}>
+                {item.name}
+              </View>
+              <View style={{ alignItems: "center" }}>{item.status}</View>
+              <View style={{ alignItems: "center" }}>{item.gender}</View>
+              <View style={{ alignItems: "center" }}>{item.species}</View>
+              <View style={{ alignItems: "center" }}>{item.episode.map(ep => (
+		        <span key={(item.name+(ep.split('episode/')[1]))}>Ep {ep.split('episode/')[1]},</span>))}</View>
+            </View>
+          </Text>
+        ))}
+      </View>
     </ScrollView>
   );
 }

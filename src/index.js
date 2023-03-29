@@ -10,6 +10,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import SplashScreen from "./screens/SplashScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import FetchNews from "./screens/FetchNews";
+import RickMorty from "./screens/RickMorty";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,13 @@ export default function RootNavigation() {
         <Stack.Screen
           name="FetchNews"
           component={FetchNews}
+          options={{
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="RickMorty"
+          component={RickMorty}
           options={{
             headerShown: true,
           }}
@@ -103,12 +111,22 @@ function TabsNavigation() {
         }}
       />
       <tabs.Screen
-        name="FecthNews"
+        name="R"
         component={FetchNews}
         options={{
           tabBarLabel: "Tela fetch",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="newspaper" color={color} size={26} />
+          ),
+        }}
+      />
+      <tabs.Screen
+        name="RickMorty"
+        component={RickMorty}
+        options={{
+          tabBarLabel: "Rick and Morty",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="rocket" color={color} size={26} />
           ),
         }}
       />
