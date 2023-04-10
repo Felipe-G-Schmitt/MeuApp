@@ -1,34 +1,24 @@
 import { useEffect, useState } from "react";
-import { Dimensions, ScrollView, View } from "react-native";
-import { Card, Paragraph, Title, ToggleButton, Text, Button } from "react-native-paper";
+import { ScrollView, View } from "react-native";
+import { Card, Paragraph, Title, Text, Button } from "react-native-paper";
 import { styles } from "../utils/styles";
 
 export default function RickMorty() {
+  // Responsável por receber os dados do JSON
   const [data, setData] = useState([]);
+
+  // Esta variável representa o filtro da busca
   const [buscaBt, setBuscaBt] = useState({
-    genero: "",
+    // gender pra filtrar por gênero
+    gender: "",
+    // status pra filtrar por vivo ou morto
     status: ""
   })
 
-  useEffect(() => {
-
-    // buscar, requerer as informações externas
-    fetch("https://rickandmortyapi.com/api/character")
-      // essas informações chegam via promessa
-      // vamos tentar converte-las em Json
-      .then((data) => data.json())
-      // depois eu vou preencher, popular a variável data
-      .then((dataJson) => setData(dataJson.results))
-      // caso ocorra erros eu mostro o erro no console
-      .catch((error) => {
-        console.log(error);
-      })
-
-  }, [])
-
+  // Quando o componente for montado, executar a função
   useEffect(() => {
     // construir a URL da API com base nas opções de busca
-    const apiUrl = `https://rickandmortyapi.com/api/character?${buscaBt.status}${buscaBt.genero}`;
+    const apiUrl = `https://rickandmortyapi.com/api/character?${buscaBt.status}${buscaBt.gender}`;
 
     // buscar, requerer as informações externas
     fetch(apiUrl)
@@ -41,15 +31,19 @@ export default function RickMorty() {
       .catch((error) => {
         console.log(error);
       })
-  }, [buscaBt.status, buscaBt.genero]);
+  }, [buscaBt.status, buscaBt.gender]); // qyabd o estado de buscaBt mudar, a função será executada novamente
 
+  // Função para filtrar por status baseado na variável status
+  // status que recebe o valor do botão clicado
   const handleStatusFilter = (status) => {
+    // atualizar o estado de buscaBt
     setBuscaBt({
       ...buscaBt,
       status: `&status=${status}`
     });
   };
 
+  // utiliza a função handleStatusFilter para filtrar por gênero
   const handleGenderFilter = (gender) => {
     setBuscaBt({
       ...buscaBt,
@@ -57,17 +51,16 @@ export default function RickMorty() {
     });
   };
 
-
   return (
     <View style={styles.containerFullWidth}>
       <View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Text>Status do personagem: </Text>
           <Button
-            onPress={() => handleStatusFilter("Alive")}
+            onPress={() => handleStatusFilter("alive")}
           >Vivo</Button>
           <Button
-            onPress={() => handleStatusFilter("Dead")}
+            onPress={() => handleStatusFilter("dead")}
           >Morto</Button>
           <Button
             onPress={() => handleStatusFilter("unknown")}
@@ -76,13 +69,13 @@ export default function RickMorty() {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Text>Gênero: </Text>
           <Button
-            onPress={() => handleGenderFilter("Male")}
+            onPress={() => handleGenderFilter("male")}
           >Masculino</Button>
           <Button
-            onPress={() => handleGenderFilter("Female")}
+            onPress={() => handleGenderFilter("female")}
           >Feminino</Button>
           <Button
-            onPress={() => handleGenderFilter("Genderless")}
+            onPress={() => handleGenderFilter("genderless")}
           >Sem Gênero</Button>
           <Button
             onPress={() => handleGenderFilter("unknown")}
@@ -93,7 +86,7 @@ export default function RickMorty() {
       <ScrollView style={styles.widthFull}>
         <View style={{ ...styles.container, ...styles.widthFull }}>
           {data.map((item) => (
-            <Card style={{ ...styles.widthFull, marginBottom: 20 }} key={item.name}>
+            <Card style={{ ...styles.widthFull, marginBottom: 20 }} key={item.id}>
               <Card.Title>{item.name}</Card.Title>
               <Card.Content>
                 <Title>{item.name}</Title>

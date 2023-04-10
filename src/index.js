@@ -11,6 +11,7 @@ import SplashScreen from "./screens/SplashScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import FetchNews from "./screens/FetchNews";
 import RickMorty from "./screens/RickMorty";
+import RMGameScreen from "./screens/RMGameScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +57,13 @@ export default function RootNavigation() {
         <Stack.Screen
           name="RickMorty"
           component={RickMorty}
+          options={{
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="RMGameScreen"
+          component={RMGameScreen}
           options={{
             headerShown: true,
           }}
@@ -125,6 +133,16 @@ function TabsNavigation() {
         component={RickMorty}
         options={{
           tabBarLabel: "Rick and Morty",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="rocket" color={color} size={26} />
+          ),
+        }}
+      />
+      <tabs.Screen
+        name="RMGamesScreen"
+        component={RMGameScreen}
+        options={{
+          tabBarLabel: "RMGamesScreen",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="rocket" color={color} size={26} />
           ),
