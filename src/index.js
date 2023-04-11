@@ -144,7 +144,7 @@ function TabsNavigation() {
         options={{
           tabBarLabel: "RMGamesScreen",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="rocket" color={color} size={26} />
+            <MaterialCommunityIcons name="gamepad-variant" color={color} size={26} />
           ),
         }}
       />

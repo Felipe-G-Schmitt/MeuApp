@@ -7,8 +7,7 @@ export default function RMGameScreen() {
   const [personagem, setPersonagem] = useState(null);
   const [personagens, setPersonagens] = useState([]);
   const [totalPersonagens, setTotalPersonagens] = useState(0);
-  // Vamos criar um jogo de Quiz baseado no API do Rick And Morty
-  // Vamor criar um compornente que vai ser responsável por renderizar as perguntas
+  const [key, setKey] = useState(0); // adicionando estado para mudar a key
 
   useEffect(() => {
     retornaTotalDePersonagens();
@@ -37,16 +36,18 @@ export default function RMGameScreen() {
   }
 
   function checkIfPersonagemEstaVivo() {
-    if (personagem?.status === "Alive") {
+    if (personagem && personagem.status === "Alive") {
       alert("Você acertou!");
     } else {
       alert("Você errou!");
     }
+    setKey(key + 1);
   }
 
   return (
     <View style={styles.container}>
       <Image
+        key={key}
         source={{ uri: personagem?.image }}
         style={{ width: 200, height: 200, borderRadius: 100 }}
       />
