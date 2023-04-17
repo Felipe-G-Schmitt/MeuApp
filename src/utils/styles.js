@@ -31,7 +31,13 @@ export const styles = StyleSheet.create({
     border: "3px solid #DBD2D0",
     borderRadius: 10,
     padding: 10,
-  }
+  },
+  imagePersonagem: {
+    
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
 });
 
 export default styles;
